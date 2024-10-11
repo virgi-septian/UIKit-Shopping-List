@@ -15,30 +15,20 @@ class ToDoListViewController: UITableViewController {
         super.viewDidLoad()
         let newItem = Item()
         newItem.title = "Find Mike"
-        newItem.done = true
         
         let newItem2 = Item()
         newItem2.title = "Find Iyan"
         
+        let newItem3 = Item()
+        newItem3.title = "Destroy Demogordon"
+        
         itemArray.append(newItem)
         itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-        itemArray.append(newItem2)
-//        if let items = defaults.array(forKey: "ToDoListArray") as? [String] {
-//            itemArray = items
-//        }
+        itemArray.append(newItem3)
+        
+        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
+            itemArray = items
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -54,11 +44,7 @@ class ToDoListViewController: UITableViewController {
         
         cell.textLabel?.text = item.title
         
-        if (item.done == true){
-            cell.accessoryType = .checkmark
-        } else  {
-            cell.accessoryType = .none
-        }
+        cell.accessoryType = item.done ? .checkmark : .none
         
         return cell
     }
