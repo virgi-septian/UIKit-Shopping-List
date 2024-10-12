@@ -16,19 +16,7 @@ class ToDoListViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        print(dataFileManager)
-        let newItem = Item()
-        newItem.title = "Find Mike"
-        
-        let newItem2 = Item()
-        newItem2.title = "Find Iyan"
-        
-        let newItem3 = Item()
-        newItem3.title = "Destroy Demogordon"
-        
-        itemArray.append(newItem)
-        itemArray.append(newItem2)
-        itemArray.append(newItem3)
+        loadItems()
         
 //        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
 //            itemArray = items
@@ -102,6 +90,19 @@ class ToDoListViewController: UITableViewController {
         }
         
         self.tableView.reloadData()
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFileManager!) {
+            let decoder = PropertyListDecoder()
+            
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print(error)
+            }
+            
+        }
     }
 }
 
