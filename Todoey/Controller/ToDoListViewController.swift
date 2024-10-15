@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoListViewController: UITableViewController {
     var itemArray = [Item]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let defaults = UserDefaults.standard
     let dataFileManager = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Item.plist")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        loadItems()
+//        loadItems()
         
 //        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
 //            itemArray = items
@@ -61,10 +64,11 @@ class ToDoListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Item", message: nil, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-            let newItem = Item()
-            newItem.title = textField.text!
-            self.itemArray.append(newItem)
             
+            let newItem = Item(context: self.context)
+            newItem.title = textField.text!
+            newItem.done = false
+            self.itemArray.append(newItem)
             self.saveItem()
         }
         
@@ -79,12 +83,8 @@ class ToDoListViewController: UITableViewController {
     
     //MARK: - Model Manipulation Methods
     func saveItem() {
-        let encoder = PropertyListEncoder()
-        
         do {
-            let data = try encoder.encode(itemArray)
-            
-            try data.write(to: dataFileManager!)
+            try context.save()
         } catch {
             print(error)
         }
@@ -92,17 +92,17 @@ class ToDoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func loadItems() {
-        if let data = try? Data(contentsOf: dataFileManager!) {
-            let decoder = PropertyListDecoder()
-            
-            do {
-                itemArray = try decoder.decode([Item].self, from: data)
-            } catch {
-                print(error)
-            }
-            
-        }
-    }
+//    func loadItems() {
+//        if let data = try? Data(contentsOf: dataFileManager!) {
+//            let decoder = PropertyListDecoder()
+//            
+//            do {
+//                itemArray = try decoder.decode([Item].self, from: data)
+//            } catch {
+//                print(error)
+//            }
+//            
+//        }
+//    }
 }
 
