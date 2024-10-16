@@ -13,13 +13,12 @@ class ToDoListViewController: UITableViewController {
     var itemArray = [Item]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let defaults = UserDefaults.standard
-    let dataFileManager = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Item.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        loadItems()
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        loadItems()
         
 //        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
 //            itemArray = items
@@ -92,17 +91,15 @@ class ToDoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-//    func loadItems() {
-//        if let data = try? Data(contentsOf: dataFileManager!) {
-//            let decoder = PropertyListDecoder()
-//            
-//            do {
-//                itemArray = try decoder.decode([Item].self, from: data)
-//            } catch {
-//                print(error)
-//            }
-//            
-//        }
-//    }
+    func loadItems() {
+        let request = NSFetchRequest<Item>(entityName: "Item")
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data: \(error)")
+        }
+        
+    }
 }
 
