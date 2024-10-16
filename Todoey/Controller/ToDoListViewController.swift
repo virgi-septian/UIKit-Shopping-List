@@ -45,13 +45,16 @@ class ToDoListViewController: UITableViewController {
     
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        
+//        itemArray[indexPath.row].setValue("Complete", forKey: "title")
+//        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
 //        if(itemArray[indexPath.row].done == false){
 //            itemArray[indexPath.row].done = true
 //        } else {
 //            itemArray[indexPath.row].done = false
 //        }
-        
+        context.delete(itemArray[indexPath.row])
+        itemArray.remove(at: indexPath.row)
         saveItem()
         
         tableView.deselectRow(at: indexPath, animated: true)
