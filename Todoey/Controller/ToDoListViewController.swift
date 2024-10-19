@@ -10,9 +10,9 @@ import UIKit
 import CoreData
 
 class ToDoListViewController: UITableViewController {
-    var itemArray = [Item]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let defaults = UserDefaults.standard
+    var itemArray = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
