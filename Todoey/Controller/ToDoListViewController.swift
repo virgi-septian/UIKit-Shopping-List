@@ -52,7 +52,7 @@ class ToDoListViewController: UITableViewController {
         if let item = toDoItem?[indexPath.row] {
             do {
                 try realm.write {
-                    item.done = !item.done
+                    realm.delete(item)
                 }
             } catch {
                 print(error)
@@ -62,7 +62,7 @@ class ToDoListViewController: UITableViewController {
         tableView.reloadData()
 //        toDoItem.remove(at: indexPath.row)
 //        saveItem()
-//        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //MARK: - Add New Items
