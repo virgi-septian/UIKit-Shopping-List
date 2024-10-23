@@ -61,7 +61,6 @@ class CategoryTableViewController: UITableViewController {
     func loadCategories() {
         categories = realm.objects(Category.self)
         
-        
         tableView.reloadData()
     }
     
