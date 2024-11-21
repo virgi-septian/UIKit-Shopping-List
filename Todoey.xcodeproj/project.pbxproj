@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A3C7F752CEF150400504375 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3C7F742CEF150400504375 /* SwipeTableViewController.swift */; };
 		1AB3A4382CC75BA60073CB71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB3A4362CC75BA60073CB71 /* Main.storyboard */; };
 		1AB3A43B2CC75BB60073CB71 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3A4392CC75BB60073CB71 /* CategoryTableViewController.swift */; };
 		1AB3A43C2CC75BB60073CB71 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3A43A2CC75BB60073CB71 /* ToDoListViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A3C7F742CEF150400504375 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		1AB3A4372CC75BA60073CB71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1AB3A4392CC75BB60073CB71 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		1AB3A43A2CC75BB60073CB71 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			children = (
 				1AB3A4392CC75BB60073CB71 /* CategoryTableViewController.swift */,
 				1AB3A43A2CC75BB60073CB71 /* ToDoListViewController.swift */,
+				1A3C7F742CEF150400504375 /* SwipeTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				1AB3A45C2CC77DCB0073CB71 /* Category.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
 				1AB3A43B2CC75BB60073CB71 /* CategoryTableViewController.swift in Sources */,
+				1A3C7F752CEF150400504375 /* SwipeTableViewController.swift in Sources */,
 				1AB3A43C2CC75BB60073CB71 /* ToDoListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
